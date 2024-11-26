@@ -3,35 +3,28 @@ plugins {
 }
 
 android {
-    namespace 'com.example.jarvis' // Ensure correct package
-    compileSdk 34 // Use the latest compileSdk version
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.jarvis"
-        minSdk 21 // Minimum supported Android version
-        targetSdk 34 // Latest stable version for targetSdk
+        minSdk 21
+        targetSdk 34
         versionCode 1
         versionName "1.0"
-
-        // Enable Java 8 and newer features
-        compileOptions {
-            sourceCompatibility JavaVersion.VERSION_17
-            targetCompatibility JavaVersion.VERSION_17
-        }
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+        }
         release {
-            minifyEnabled false // Disable code shrinking for release builds (can enable for production)
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
-    // Required dependencies
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.3' // HTTP client library
-    implementation 'org.json:json:20210307' // JSON handling library
-}
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
